@@ -75,6 +75,6 @@ cursor.execute('SELECT COUNT(*) FROM employee_data WHERE Education = "Masters"')
 records=cursor.fetchall()
 print(records)
 print(f"therefore {records} are there studying masters ")
-# Step 6: Close the cursor and connection
+
 cursor.close()
 connection.close()

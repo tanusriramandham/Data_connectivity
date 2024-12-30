@@ -37,9 +37,9 @@ cursor.execute('USE data_the_upload')
 # cursor.execute(create_table_query)
 
 #load csv file
-df = pd.read_csv('Employee.csv')  # Replace with your file path
-df = df.dropna()  # Drop rows with null values
-df = df.head(30)  # Use the first 30 rows
+df = pd.read_csv('Employee.csv')  
+df = df.dropna() 
+df = df.head(30)  
 
 print(df)
 

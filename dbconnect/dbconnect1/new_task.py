@@ -2,7 +2,6 @@ import mysql.connector
 import pandas as pd
 from mysql.connector import Error
 
-# Step 1: Connect to the MySQL server
 connection = mysql.connector.connect(
     host='localhost',         
     user='root',     
@@ -13,15 +12,15 @@ connection = mysql.connector.connect(
 if connection.is_connected():
     print("Successfully connected to the database server")
 
-# Create a cursor to execute queries
+
 cursor = connection.cursor()
 
-# Step 2: Create a new database
+#create Db and table 
 #cursor.execute('CREATE DATABASE IF NOT EXISTS data_the_upload')
 cursor.execute('USE data_the_upload')
 
-# Step 3: Create the table in the database
-# Ensure the ID column is the first column
+
+
 # create_table_query = """
 #   CREATE TABLE IF NOT EXISTS employee_data (
 #     Education VARCHAR(50),
@@ -37,7 +36,7 @@ cursor.execute('USE data_the_upload')
 # """
 # cursor.execute(create_table_query)
 
-# Step 4: Load the data from the CSV file into a DataFrame
+#load csv file
 df = pd.read_csv('Employee.csv')  # Replace with your file path
 df = df.dropna()  # Drop rows with null values
 df = df.head(30)  # Use the first 30 rows
@@ -45,8 +44,7 @@ df = df.head(30)  # Use the first 30 rows
 print(df)
 
 # for i, row in df.iterrows():
-#     # Ensure data_to_insert matches the expected number of columns in the table
-#     data_to_insert =tuple(row)  # Include the index as ID
+#     data_to_insert =tuple(row)  
 
 #     insert_query = """
 #     INSERT INTO employee_data (Education,JoiningYear,City,PaymentTier,Age,Gender,EverBenched,ExperienceInCurrentDomain,LeaveOrNot)
@@ -54,7 +52,7 @@ print(df)
 #     """
 #     cursor.execute(insert_query, data_to_insert)
 
-# Commit the transaction to save the data
+
 connection.commit()
 
 print("Data inserted successfully into employee_data table!")
